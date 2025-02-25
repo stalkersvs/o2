@@ -1,0 +1,41 @@
+.inputField {
+ @apply rounded-xl ring-[1px] ring-gray-500;
+ @apply py-3 pr-2 pl-4;
+ @apply placeholder:text-gray-300 placeholder:text-base;
+ @apply w-full sm:w-[400px];
+ @apply transition-all;
+ @apply hover:ring-[2px];
+ @apply focus:outline-none focus:ring-[3px];
+}
+
+
+.inputFieldERROR{
+ @apply ring-red-500 ;
+}
+
+.inputFieldWARNING{
+ @apply ring-yellow-200 ;
+}
+
+
+.inputLabel {
+ @apply text-sm sm:text-base text-gray-950;
+}
+
+.inputCaption{
+ @apply text-base ml-4
+}
+
+.inputCaptionWarning{
+ @apply text-base ml-4
+}
+
+.inputCaptionERROR{
+ @apply text-red-500
+}
+
+.inputCaptionWARNING{
+ @apply text-yellow-200
+}
+
+
