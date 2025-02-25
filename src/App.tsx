@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { InputFieldState, TextInput } from './TextInput.tsx'
+import { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [textValue, setTextValue] = useState('')
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <main className={'text-left inline-block'}>
+            <TextInput
+                state={InputFieldState.ERROR}
+                value={textValue}
+                label={'Input'}
+                placeholder={'Placeholder'}
+                updateValue={setTextValue}
+                name={'textValue'}
+                caption={'123123123'}
+                icon={<div>123</div>}
+            ></TextInput>
+            <br />
+            <hr />
+            <br />
+            Result: <b>{textValue}</b>
+        </main>
+    )
 }
 
 export default App
