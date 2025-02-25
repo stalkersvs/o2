@@ -1,0 +1,20 @@
+.inputField {
+ @apply rounded-xl ring-[1px] ring-gray-500;
+ @apply py-3 pr-2 pl-4;
+
+ @apply focus:outline-none focus:ring-[3px];
+
+
+ @apply placeholder:text-gray-300 placeholder:text-base;
+ @apply w-full;
+ @apply transition-all;
+}
+
+.inputLabel {
+ @apply text-sm sm:text-base text-gray-950;
+}
+
+.inputError{
+
+}
+
