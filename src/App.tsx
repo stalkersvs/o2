@@ -1,5 +1,5 @@
 import './App.css'
-import { TextInput } from './TextInput.tsx'
+import { InputFieldState, TextInput } from './TextInput.tsx'
 import { useState } from 'react'
 
 function App() {
@@ -8,11 +8,13 @@ function App() {
     return (
         <main className={'text-left inline-block'}>
             <TextInput
+                state={InputFieldState.ERROR}
                 value={textValue}
                 label={'Input'}
                 placeholder={'Placeholder'}
                 updateValue={setTextValue}
                 name={'textValue'}
+                caption={'123123123'}
                 icon={<div>123</div>}
             ></TextInput>
             <br />

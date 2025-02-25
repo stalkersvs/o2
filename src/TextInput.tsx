@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 
 import styles from './TextInput.module.scss'
+import classNames from 'classnames'
+
+export enum InputFieldState {
+    'DEFAULT' = 'DEFAULT',
+    'WARNING' = 'WARNING',
+    'ERROR' = 'ERROR',
+}
 
 type TextInputProps = {
     label?: string
@@ -10,8 +17,8 @@ type TextInputProps = {
     required?: boolean
     placeholder?: string
     disabled?: boolean
-    isValid?: boolean
-    errorMessage?: string
+    caption?: string
+    state?: InputFieldState
     icon?: React.ReactNode
 }
 
@@ -23,8 +30,8 @@ export const TextInput = ({
     required,
     placeholder,
     disabled,
-    isValid,
-    errorMessage,
+    state = InputFieldState.DEFAULT,
+    caption,
     icon,
 }: TextInputProps) => {
     const [inputValue, setInputValue] = useState(value)
@@ -36,11 +43,7 @@ export const TextInput = ({
     const id = `text-input-${name}`
 
     return (
-        <div
-            className={
-                'flex flex-col items-start gap-2 min-w-full sm:min-w-[400px]'
-            }
-        >
+        <div className={'flex flex-col items-start gap-2'}>
             {label && (
                 <label
                     className={styles.inputLabel}
@@ -53,9 +56,12 @@ export const TextInput = ({
                     )}
                 </label>
             )}
-            <div className={'relative w-full'}>
+            <div className={'relative'}>
                 <input
-                    className={styles.inputField}
+                    className={classNames(
+                        `${styles.inputField}`,
+                        `${styles[`inputField${state}`]}`
+                    )}
                     required={required}
                     disabled={disabled}
                     id={id}
@@ -74,8 +80,15 @@ export const TextInput = ({
                     </div>
                 )}
             </div>
-            {isValid && errorMessage && (
-                <p className={styles.inputError}>{errorMessage}</p>
+            {caption && (
+                <p
+                    className={classNames(
+                        styles.inputCaption,
+                        styles[`inputCaption${state}`]
+                    )}
+                >
+                    {caption}
+                </p>
             )}
         </div>
     )
